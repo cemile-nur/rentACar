@@ -1,8 +1,8 @@
 package com.kodlamaio.rentacar.webApı.controllers;
 
-import com.kodlamaio.rentacar.business.abstracts.BrandService;
-import com.kodlamaio.rentacar.business.requests.CreateBrandRequest;
-import com.kodlamaio.rentacar.business.responses.GetAllBrandsResponse;
+import com.kodlamaio.rentacar.business.abstracts.VehicleService;
+import com.kodlamaio.rentacar.business.requests.CreateVehicleRequest;
+import com.kodlamaio.rentacar.business.responses.GetAllVehiclesResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -14,20 +14,20 @@ import java.util.List;
 @RestController //annotation
 @RequestMapping("/api/brands")
 public class BrandsController {
-    private BrandService brandService;
+    private VehicleService vehicleService;
 
     @Autowired
-    public BrandsController(BrandService brandService) {
-        this.brandService = brandService;
+    public BrandsController(VehicleService vehicleService) {
+        this.vehicleService = vehicleService;
     }
 
     @GetMapping("/getall")
-    public List<GetAllBrandsResponse> getAll(){
-        return brandService.getAll();
+    public List<GetAllVehiclesResponse> getAll(){
+        return vehicleService.getAll();
     }
 
     @PostMapping("/add")
-    public void add(CreateBrandRequest createBrandRequest){
-    this.brandService.add(createBrandRequest);
+    public void add(CreateVehicleRequest createVehicleRequest){
+    this.vehicleService.add(createVehicleRequest);
     }
 }
